@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite dev",
-		"prebuild": "tsx scripts/n8n-zahlen.ts",
+		"prebuild": "tsx scripts/n8n-zahlen.ts && tsx scripts/build-log.ts",
 		"build": "vite build",
 		"preview": "vite preview",
 		"prepare": "svelte-kit sync || echo ''",

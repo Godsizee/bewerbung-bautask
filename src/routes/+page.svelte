@@ -5,6 +5,7 @@
 	import Agent from '$lib/components/Agent.svelte';
 	import GithubIcon from '$lib/components/GithubIcon.svelte';
 	import n8nStats from '$lib/data/n8n.json';
+	import buildLog from '$lib/data/build-log.json';
 	import {
 		FileText,
 		ExternalLink,
@@ -59,18 +60,10 @@
 		}
 	];
 
-	const buildLogCommits = [
-		{ zeit: 'Fr 18:30', typ: 'Scaffold', desc: 'SvelteKit 2 + Svelte 5 Runes + Tailwind 4 Setup & Types', wer: 'Basti + Agent' },
-		{ zeit: 'Fr 19:15', typ: 'n8n Workflow', desc: 'Agent-Pipeline mit Webhook, Shared-Secret & Anthropic Haiku 4.5', wer: 'Basti' },
-		{ zeit: 'Fr 20:00', typ: 'Server-Proxy', desc: 'POST /api/frag mit In-Memory Rate-Limiter (8/10m, 200/Tag)', wer: 'Agent + Basti' },
-		{ zeit: 'Fr 20:45', typ: 'Architektur', desc: 'Refactoring: dynamic env statt static env für Container-Deployments', wer: 'Basti (Review)' },
-		{ zeit: 'Sa 09:30', typ: 'Inhalt', desc: 'Sektion „Zwei Balken Empfang“: Biografie Lokführer & Offline-First', wer: 'Basti' },
-		{ zeit: 'Sa 11:00', typ: 'Automatisierung', desc: 'Build-Zeit Workflow-Sync von n8n API nach n8n.json', wer: 'Agent' },
-		{ zeit: 'Sa 12:30', typ: 'UI & Polish', desc: 'Chat-Widget mit Schnellklick-Fragen, 429-Handling & Doku', wer: 'Basti + Agent' }
-	];
+	const buildLogCommits = buildLog.commits;
 </script>
 
-<Statusleiste commitCount={7} stunden={4} />
+<Statusleiste commitCount={buildLog.commitCount} stunden={buildLog.stunden} />
 
 <main class="min-h-screen">
 	<!-- 1. HERO -->
@@ -185,11 +178,11 @@
 
 		<div class="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
 			<div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800/80">
-				<div class="text-2xl font-bold text-amber-400 font-mono">70 %</div>
+				<div class="text-2xl font-bold text-amber-400 font-mono">80 %</div>
 				<div class="text-xs text-zinc-400 mt-1">KI-generiertes Grundgerüst</div>
 			</div>
 			<div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800/80">
-				<div class="text-2xl font-bold text-zinc-200 font-mono">20 %</div>
+				<div class="text-2xl font-bold text-zinc-200 font-mono">10 %</div>
 				<div class="text-xs text-zinc-400 mt-1">Von Hand nachgeschärft & refactored</div>
 			</div>
 			<div class="p-4 rounded-lg bg-zinc-900/50 border border-zinc-800/80">

@@ -1,0 +1,24 @@
+{
+	"commits": [
+		{
+			"zeit": "Do 17.09 13:10",
+			"typ": "Setup",
+			"desc": "SvelteKit-Grundgeruest (Svelte 5, Tailwind 4, adapter-node)",
+			"wer": "Basti"
+		},
+		{
+			"zeit": "Do 17.09 13:11",
+			"typ": "API",
+			"desc": "Server-Proxy /api/frag mit Rate-Limit und dynamic env",
+			"wer": "Basti"
+		},
+		{
+			"zeit": "Do 17.09 13:35",
+			"typ": "Feature",
+			"desc": "Komplette BauTask Bewerbungs-Webseite (Sektionen 1-10, Chat-Agent, Rechtstexte, Nixpacks)",
+			"wer": "Basti"
+		}
+	],
+	"commitCount": 3,
+	"stunden": 1
+}
