@@ -23,8 +23,14 @@
 			"typ": "Fix",
 			"desc": "Build-Log und Statusleiste aus echten Git-Commits speisen",
 			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 12:37",
+			"typ": "Fix",
+			"desc": "Agent-Prompt, Zeitangaben und Antwort-Rendering korrigieren",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 4,
+	"commitCount": 5,
 	"stunden": 2
 }

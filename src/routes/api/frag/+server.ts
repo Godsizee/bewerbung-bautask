@@ -9,6 +9,7 @@ const PRO_TAG = 200;
 const treffer = new Map<string, number[]>();
 let tagesZaehler = 0;
 let tagesStart = Date.now();
+let letzteBereinigung = Date.now();
 
 export const POST: RequestHandler = async ({ request, getClientAddress, fetch }) => {
 	if (Date.now() - tagesStart > 86_400_000) {
@@ -18,20 +19,6 @@ export const POST: RequestHandler = async ({ request, getClientAddress, fetch })
 	if (tagesZaehler >= PRO_TAG) {
 		throw error(429, 'Tageslimit für Agent-Anfragen erreicht. Morgen geht es weiter.');
 	}
-
-	let ip = '127.0.0.1';
-	try {
-		ip = getClientAddress();
-	} catch {
-		// Fallback in lokaler Entwicklungsumgebung
-	}
-
-	const jetzt = Date.now();
-	const bisher = (treffer.get(ip) ?? []).filter((t) => jetzt - t < FENSTER_MS);
-	if (bisher.length >= PRO_IP) {
-		throw error(429, 'Zu viele Fragen in kurzer Zeit. Bitte kurz durchatmen.');
-	}
-	treffer.set(ip, [...bisher, jetzt]);
 
 	let frage: string;
 	try {
@@ -47,6 +34,29 @@ export const POST: RequestHandler = async ({ request, getClientAddress, fetch })
 	if (frage.length > 300) {
 		throw error(400, 'Bitte kürzer fassen (maximal 300 Zeichen).');
 	}
+
+	let ip = '127.0.0.1';
+	try {
+		ip = getClientAddress();
+	} catch {
+		// Fallback in lokaler Entwicklungsumgebung
+	}
+
+	const jetzt = Date.now();
+	if (jetzt - letzteBereinigung > FENSTER_MS) {
+		for (const [key, zeiten] of treffer) {
+			const aktuell = zeiten.filter((t) => jetzt - t < FENSTER_MS);
+			if (aktuell.length === 0) treffer.delete(key);
+			else treffer.set(key, aktuell);
+		}
+		letzteBereinigung = jetzt;
+	}
+
+	const bisher = (treffer.get(ip) ?? []).filter((t) => jetzt - t < FENSTER_MS);
+	if (bisher.length >= PRO_IP) {
+		throw error(429, 'Zu viele Fragen in kurzer Zeit. Bitte kurz durchatmen.');
+	}
+	treffer.set(ip, [...bisher, jetzt]);
 
 	const webhookUrl = env.N8N_AGENT_WEBHOOK_URL;
 	const secret = env.AGENT_SHARED_SECRET;

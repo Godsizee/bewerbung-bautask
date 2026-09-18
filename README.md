@@ -1,42 +1,43 @@
-# sv
+# Bewerbung BauTask
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Bewerbungsseite von Sebastian Bade für die Stelle als Software Entwickler bei der BauTask GmbH. SvelteKit 2 / Svelte 5, Tailwind 4, `adapter-node`, deployt via Nixpacks auf Coolify.
 
-## Creating a project
+## Architektur
 
-If you're seeing this, you've probably already done this step. Congrats!
+- `src/routes/+page.svelte` – Die eigentliche Seite: Hero, Build-Log, Projekte, Lebenslauf, Agent-Chat.
+- `src/routes/api/frag/+server.ts` – Server-Proxy für den Chat-Agenten. Validiert die Eingabe, rate-limitet pro IP (8 Fragen / 10 Minuten) und pro Tag (200), reicht die Frage dann an einen n8n-Webhook weiter, der das eigentliche LLM anspricht.
+- `src/lib/components/Agent.svelte` – Der Chat-Client für obigen Endpoint.
+- `n8n/system-prompt.md` – System-Prompt des n8n-Agenten (läuft auf einer eigenen n8n-Instanz, nicht in diesem Repo).
+- `scripts/n8n-zahlen.ts` – Prebuild-Skript, holt Live-Workflow-Zahlen von der n8n-API und schreibt sie nach `src/lib/data/n8n.json`. Ohne gültigen Key wird der letzte Cache-Stand weiterverwendet.
+- `scripts/build-log.ts` – Prebuild-Skript, liest die echte Git-Historie aus und erzeugt `src/lib/data/build-log.json` für die Build-Log-Sektion.
+
+## Environment-Variablen
+
+Siehe [.env.example](.env.example) für die vollständige Liste. Kurzfassung:
+
+| Variable | Zweck |
+|---|---|
+| `N8N_AGENT_WEBHOOK_URL` | Ziel-Webhook des Chat-Agenten |
+| `AGENT_SHARED_SECRET` | Shared Secret zwischen `+server.ts` und n8n-Webhook |
+| `ORIGIN` | Von `adapter-node` für korrekte URL-Auflösung hinter dem Proxy benötigt |
+| `N8N_API_KEY` | Nur für den Prebuild-Schritt, holt aktuelle Workflow-Zahlen |
+| `ADDRESS_HEADER` / `XFF_DEPTH` | **Produktiv zwingend** (`x-forwarded-for` / `1`) – ohne diese Werte liefert `getClientAddress()` hinter Traefik/Coolify für alle Besucher dieselbe Proxy-IP, das Rate-Limit greift dann global statt pro Besucher |
+
+## Entwicklung
 
 ```sh
-# create a new project
-npx sv create my-app
-```
-
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-npx sv@0.17.0 create --template minimal --types ts --no-install .
-```
-
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
-
-```sh
+npm install
+cp .env.example .env   # Werte eintragen
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
-
-To create a production version of your app:
+## Build
 
 ```sh
-npm run build
+npm run build      # führt vorher die beiden Prebuild-Skripte aus
+npm run preview
 ```
 
-You can preview the production build with `npm run preview`.
+## Deploy
 
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+Coolify baut über [nixpacks.toml](nixpacks.toml) und startet mit `npm run start` (`node build`, `adapter-node`). Alle Variablen aus `.env.example` müssen als Coolify-Environment gesetzt sein, insbesondere `ADDRESS_HEADER` und `XFF_DEPTH` für ein funktionierendes Rate-Limit hinter dem Traefik-Proxy.

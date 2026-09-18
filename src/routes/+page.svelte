@@ -17,7 +17,6 @@
 		ShieldCheck,
 		Database,
 		Layers,
-		CheckCircle2,
 		XCircle,
 		ArrowUpRight,
 		Terminal,
@@ -63,9 +62,16 @@
 	const buildLogCommits = buildLog.commits;
 </script>
 
+<a
+	href="#main-content"
+	class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-md focus:bg-amber-500 focus:text-zinc-950 focus:font-semibold"
+>
+	Zum Hauptinhalt springen
+</a>
+
 <Statusleiste commitCount={buildLog.commitCount} stunden={buildLog.stunden} />
 
-<main class="min-h-screen">
+<main id="main-content" class="min-h-screen">
 	<!-- 1. HERO -->
 	<section id="hero" class="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-zinc-900">
 		<div class="max-w-4xl mx-auto px-4 sm:px-6">
@@ -190,6 +196,7 @@
 				<div class="text-xs text-zinc-400 mt-1">Vorschläge bewusst weggeworfen</div>
 			</div>
 		</div>
+		<div class="text-[11px] text-zinc-500 pt-1">Eigene Einschätzung, nicht automatisiert gemessen – im Gegensatz zu Commit-Log und Stundenzahl oben.</div>
 	</Sektion>
 
 	<!-- 4. WEGGEWORFEN -->
