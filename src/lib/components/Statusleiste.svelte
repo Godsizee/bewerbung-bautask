@@ -64,19 +64,6 @@
 			<span class="text-zinc-400 hidden sm:inline">SvelteKit 2 · TS · Tailwind 4</span>
 		</div>
 
-		<nav aria-label="Sektionen" class="hidden lg:flex items-center gap-1 min-w-0 overflow-hidden">
-			{#each sektionen as s (s.id)}
-				<a
-					href="#{s.id}"
-					aria-current={aktiv === s.id ? 'true' : undefined}
-					class="px-2 py-1 rounded-t border-b-2 whitespace-nowrap transition-colors
-					       {aktiv === s.id
-					         ? 'border-amber-500 text-amber-400'
-					         : 'border-transparent text-zinc-400 hover:text-amber-300'}"
-				>{s.kurz}</a>
-			{/each}
-		</nav>
-
 		<div class="flex items-center gap-3 sm:gap-6 text-zinc-400 shrink-0">
 			<div class="hidden 2xl:flex items-center gap-2 text-zinc-500">
 				<span>Git: <strong class="text-zinc-300 font-normal">{commitCount} Commits</strong></span>
