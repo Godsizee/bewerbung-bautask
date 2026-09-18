@@ -2,3 +2,7 @@ providers = ["node"]
 
 [phases.setup]
 nixpkgsArchive = "f205b5574fd0cb7da5b702a2da51507b7f4fdd1b"
+# git wird nicht zum Bauen gebraucht, sondern vom Prebuild-Schritt: scripts/build-log.ts
+# liest die echte Commit-Historie aus. Fehlt git im Image, faellt das Skript still auf
+# die eingecheckte build-log.json zurueck und die Seite zeigt einen aelteren Stand.
+aptPkgs = ["git"]
