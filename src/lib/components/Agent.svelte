@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { Send, Sparkles, Terminal, AlertCircle, RefreshCw } from 'lucide-svelte';
+	import { segmente } from '$lib/antworttext';
 
 	let frage = $state('');
 	let antwort = $state('');
@@ -7,20 +8,6 @@
 	let fehler = $state<string | null>(null);
 	let isRateLimit = $state(false);
 	let dauer = $state<number | null>(null);
-
-	// Der System-Prompt verlangt reinen Text (siehe n8n/system-prompt.md), aber ein LLM
-	// liefert gelegentlich doch **fett**. Segmentweise rendern statt {@html} - so kann
-	// aus der Modellantwort kein Markup in die Seite gelangen.
-	function segmente(text: string) {
-		return text
-			.split(/(\*\*[^*]+\*\*)/g)
-			.filter(Boolean)
-			.map((teil) =>
-				teil.startsWith('**') && teil.endsWith('**')
-					? { fett: true, text: teil.slice(2, -2) }
-					: { fett: false, text: teil }
-			);
-	}
 
 	const beispielfragen = [
 		'Hast du schon mal was Offline-fähiges gebaut?',
