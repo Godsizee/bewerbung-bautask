@@ -6,10 +6,25 @@
 	let loading = $state(false);
 	let fehler = $state<string | null>(null);
 	let isRateLimit = $state(false);
+	let dauer = $state<number | null>(null);
+
+	// Der System-Prompt verlangt reinen Text (siehe n8n/system-prompt.md), aber ein LLM
+	// liefert gelegentlich doch **fett**. Segmentweise rendern statt {@html} - so kann
+	// aus der Modellantwort kein Markup in die Seite gelangen.
+	function segmente(text: string) {
+		return text
+			.split(/(\*\*[^*]+\*\*)/g)
+			.filter(Boolean)
+			.map((teil) =>
+				teil.startsWith('**') && teil.endsWith('**')
+					? { fett: true, text: teil.slice(2, -2) }
+					: { fett: false, text: teil }
+			);
+	}
 
 	const beispielfragen = [
-		'Hat er schon mal was Offline-fähiges gebaut?',
-		'Was kann er nicht?',
+		'Hast du schon mal was Offline-fähiges gebaut?',
+		'Was kannst du nicht?',
 		'Warum Lokführer und jetzt Software?'
 	];
 
@@ -22,6 +37,8 @@
 		fehler = null;
 		isRateLimit = false;
 		antwort = '';
+		dauer = null;
+		const start = performance.now();
 
 		try {
 			const res = await fetch('/api/frag', {
@@ -44,6 +61,7 @@
 
 			const data = await res.json();
 			antwort = data.antwort || 'Keine Antwort erhalten.';
+			dauer = (performance.now() - start) / 1000;
 		} catch (err: unknown) {
 			fehler = 'Netzwerkfehler: Verbindung zum Server fehlgeschlagen.';
 		} finally {
@@ -113,6 +131,7 @@
 		<div class="relative">
 			<textarea
 				bind:value={frage}
+				aria-label="Frage an den Agenten"
 				disabled={loading}
 				rows="3"
 				maxlength="300"
@@ -158,10 +177,12 @@
 		<div class="mt-5 rounded-lg border border-zinc-700 bg-zinc-950 p-5 space-y-2">
 			<div class="text-[11px] font-mono uppercase tracking-wider text-amber-400 flex items-center justify-between">
 				<span>Antwort des Agenten</span>
-				<span class="text-zinc-500 font-normal">Antwortzeit &lt; 3s</span>
+				{#if dauer !== null}
+					<span class="text-zinc-500 font-normal">Antwortzeit {dauer.toFixed(1)}s</span>
+				{/if}
 			</div>
-			<div class="text-sm sm:text-base text-zinc-200 leading-relaxed font-sans prose prose-invert max-w-none">
-				{antwort}
+			<div class="text-sm sm:text-base text-zinc-200 leading-relaxed font-sans whitespace-pre-line">
+				{#each segmente(antwort) as s}{#if s.fett}<strong class="font-semibold text-zinc-100">{s.text}</strong>{:else}{s.text}{/if}{/each}
 			</div>
 		</div>
 	{/if}

@@ -22,7 +22,7 @@
 			<div class="hidden md:flex items-center gap-2 text-zinc-500">
 				<span>Git: <strong class="text-zinc-300 font-normal">{commitCount} Commits</strong></span>
 				<span>·</span>
-				<span>Zeit: <strong class="text-zinc-300 font-normal">~{stunden}h</strong></span>
+				<span>Zeit: <strong class="text-zinc-300 font-normal">~{stunden}h aktiv</strong></span>
 			</div>
 
 			<a

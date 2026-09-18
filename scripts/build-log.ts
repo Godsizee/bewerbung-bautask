@@ -35,6 +35,30 @@ function parseWer(body: string): string {
 	return /co-authored-by:\s*claude/i.test(body) ? 'Basti + Agent' : 'Basti';
 }
 
+/**
+ * Aktive Arbeitszeit statt Kalenderspanne.
+ *
+ * Erster bis letzter Commit waere ueber Nacht irrefuehrend: zwei Commits am Abend und
+ * am naechsten Mittag ergaeben ~20h, obwohl dazwischen geschlafen wurde. Gezaehlt wird
+ * deshalb nur der Abstand zwischen zwei Commits, wenn er hoechstens PAUSE_SEKUNDEN
+ * betraegt. Groessere Luecken sind Pausen und zaehlen gar nicht.
+ *
+ * Die Zahl untertreibt damit bewusst - die Arbeit vor dem allerersten Commit taucht
+ * nicht auf. Auf einer Seite, die mit Nachpruefbarkeit wirbt, ist das die richtige
+ * Richtung zu irren.
+ */
+function aktiveStunden(unixZeiten: number[]): number {
+	const PAUSE_SEKUNDEN = 2 * 3600;
+
+	const sekunden = unixZeiten
+		.slice(1)
+		.map((zeit, i) => zeit - unixZeiten[i])
+		.filter((abstand) => abstand <= PAUSE_SEKUNDEN)
+		.reduce((summe, abstand) => summe + abstand, 0);
+
+	return Math.max(1, Math.round(sekunden / 3600));
+}
+
 function buildLog() {
 	try {
 		const raw = execSync("git log --reverse --pretty=format:%H%x1f%at%x1f%s%x1f%b%x1e", {
@@ -60,9 +84,7 @@ function buildLog() {
 
 		if (commits.length === 0) throw new Error('Keine Commits gefunden.');
 
-		const ersterCommit = commits[0].unix;
-		const letzterCommit = commits[commits.length - 1].unix;
-		const stunden = Math.max(1, Math.round((letzterCommit - ersterCommit) / 3600));
+		const stunden = aktiveStunden(commits.map((c) => c.unix));
 
 		const result = {
 			commits: commits.map(({ zeit, typ, desc, wer }) => ({ zeit, typ, desc, wer })),
@@ -72,7 +94,7 @@ function buildLog() {
 
 		fs.mkdirSync(path.dirname(outputPath), { recursive: true });
 		fs.writeFileSync(outputPath, JSON.stringify(result, null, '\t') + '\n', 'utf-8');
-		console.log(`[build-log] Aktualisiert: ${commits.length} Commits, ~${stunden}h Spanne.`);
+		console.log(`[build-log] Aktualisiert: ${commits.length} Commits, ~${stunden}h aktive Arbeitszeit.`);
 	} catch (err: unknown) {
 		const message = err instanceof Error ? err.message : String(err);
 		console.warn(`[build-log] Fehler beim git log: ${message}. Nutze gecachte build-log.json.`);

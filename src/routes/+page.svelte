@@ -77,12 +77,12 @@
 			<h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-100 leading-[1.15]">
 				Ihr wollt keine perfekte Bewerbung.<br />
 				<span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">
-					Hier ist ein Wochenende.
+					Hier sind zwei Tage.
 				</span>
 			</h1>
 
 			<p class="mt-6 text-base sm:text-xl text-zinc-300 max-w-2xl leading-relaxed">
-				Freitagabend angefangen, Sonntagabend online. Gebaut mit denselben Werkzeugen, mit denen ihr arbeitet. Das Protokoll steht weiter unten — inklusive der Stellen, an denen ich den Output weggeworfen habe.
+				Donnerstagmittag angefangen, Freitag online. Gebaut mit denselben Werkzeugen, mit denen ihr arbeitet. Das Protokoll steht weiter unten — inklusive der Stellen, an denen ich den Output weggeworfen habe.
 			</p>
 
 			<div class="mt-6 flex flex-wrap items-center gap-y-2 gap-x-6 text-xs sm:text-sm font-mono text-zinc-400">
@@ -140,7 +140,7 @@
 
 		<div class="space-y-4 text-base sm:text-lg">
 			<p>
-				Ich hatte kein Quartal und keine Woche. Ich hatte ein Wochenende.
+				Ich hatte kein Quartal und keine Woche. Ich hatte zwei Tage.
 			</p>
 			<p>
 				Die Seite vor euch ist der praktische Nachweis. Ein Live-Agent, angebunden an ein eigenes n8n-System, ein serverseitiger Node-Proxy mit Schutz vor Missbrauch, komponentenbasiertes SvelteKit mit Svelte 5 Runes und Tailwind 4.
@@ -432,7 +432,7 @@
 					<span>Hotwire</span>
 				</div>
 				<p class="text-xs text-zinc-400 leading-relaxed">
-					Bisher nur Dokumentation gelesen. Diese Seite wäre der ehrlichere Ort für einen Beweis gewesen — dafür hat ein einzelnes Wochenende nicht gereicht. Eine halbfertige Rails-App wäre ein schlechteres Argument gewesen als eine funktionierende SvelteKit-Seite.
+					Bisher nur Dokumentation gelesen. Diese Seite wäre der ehrlichere Ort für einen Beweis gewesen — dafür haben zwei Tage nicht gereicht. Eine halbfertige Rails-App wäre ein schlechteres Argument gewesen als eine funktionierende SvelteKit-Seite.
 				</p>
 			</div>
 		</div>

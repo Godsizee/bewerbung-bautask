@@ -17,8 +17,14 @@
 			"typ": "Feature",
 			"desc": "Komplette BauTask Bewerbungs-Webseite (Sektionen 1-10, Chat-Agent, Rechtstexte, Nixpacks)",
 			"wer": "Basti"
+		},
+		{
+			"zeit": "Do 17.09 15:17",
+			"typ": "Fix",
+			"desc": "Build-Log und Statusleiste aus echten Git-Commits speisen",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 3,
-	"stunden": 1
+	"commitCount": 4,
+	"stunden": 2
 }
