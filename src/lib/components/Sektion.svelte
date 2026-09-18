@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Snippet } from 'svelte';
+	import { reveal } from '$lib/reveal';
 
 	interface Props {
 		id: string;
@@ -13,7 +14,7 @@
 	let { id, nummer, titel, subtitel, class: className = '', children }: Props = $props();
 </script>
 
-<section {id} class="py-16 sm:py-20 border-b border-zinc-900 {className}">
+<section {id} use:reveal class="py-16 sm:py-20 border-b border-zinc-900 {className}">
 	<div class="spur">
 		<header class="mb-8 max-w-3xl">
 			{#if nummer}
