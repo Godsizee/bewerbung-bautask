@@ -541,7 +541,7 @@
 
 	<!-- 9. FRAG DEN AGENTEN -->
 	<Sektion id="agent" nummer="08" titel="Frag den Agenten" subtitel="Dahinter läuft ein echter n8n-Workflow mit Claude Haiku 4.5. Fragt ihn was — er kennt meinen Lebenslauf inzwischen besser als ich.">
-		<div class="max-w-4xl">
+		<div class="max-w-4xl mx-auto">
 			<Agent />
 		</div>
 	</Sektion>
