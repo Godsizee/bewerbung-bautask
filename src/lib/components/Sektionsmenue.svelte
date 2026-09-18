@@ -8,6 +8,16 @@
 	let istSchmalViewport = $state(false);
 	let wrapper = $state<HTMLElement | null>(null);
 	let panel = $state<HTMLElement | null>(null);
+	let ausloeser = $state<HTMLElement | null>(null);
+
+	/** Sichtbare fokussierbare Elemente im Panel, in Dokumentreihenfolge.
+	 *  offsetParent filtert die Eintraege raus, die per lg:hidden weg sind. */
+	function fokussierbare(): HTMLElement[] {
+		if (!panel) return [];
+		return Array.from(
+			panel.querySelectorAll<HTMLElement>('a[href], button:not([disabled])')
+		).filter((el) => el.offsetParent !== null);
+	}
 
 	function schliessen() {
 		offen = false;
@@ -37,7 +47,30 @@
 		panel?.focus();
 
 		function beiTaste(e: KeyboardEvent) {
-			if (e.key === 'Escape') schliessen();
+			if (e.key === 'Escape') {
+				schliessen();
+				return;
+			}
+
+			// Fokus-Trap nur im Vollbild-Modus: dort ist das Panel ein Dialog mit
+			// aria-modal, hinter dem nichts mehr erreichbar sein darf. Das angedockte
+			// Dropdown ab lg ist kein Modal - da gehoert Tab weiter in die Seite.
+			if (e.key !== 'Tab' || !istSchmalViewport) return;
+
+			const elemente = fokussierbare();
+			if (elemente.length === 0) return;
+
+			const erster = elemente[0];
+			const letzter = elemente[elemente.length - 1];
+			const aktuell = document.activeElement;
+
+			if (e.shiftKey && (aktuell === erster || aktuell === panel)) {
+				e.preventDefault();
+				letzter.focus();
+			} else if (!e.shiftKey && aktuell === letzter) {
+				e.preventDefault();
+				erster.focus();
+			}
 		}
 		function beiKlickAusserhalb(e: MouseEvent) {
 			if (wrapper && !wrapper.contains(e.target as Node)) schliessen();
@@ -53,12 +86,17 @@
 			window.removeEventListener('keydown', beiTaste);
 			window.removeEventListener('click', beiKlickAusserhalb);
 			window.clearTimeout(timer);
+
+			// Fokus zurueck an den Oeffner, sonst faellt er beim Schliessen auf <body>
+			// und die naechste Tab-Taste faengt wieder ganz oben an.
+			if (panel?.contains(document.activeElement)) ausloeser?.focus();
 		};
 	});
 </script>
 
 <div bind:this={wrapper} class="relative">
 	<button
+		bind:this={ausloeser}
 		type="button"
 		onclick={umschalten}
 		aria-expanded={offen}
@@ -77,7 +115,7 @@
 		aria-modal={istSchmalViewport ? 'true' : undefined}
 		aria-label="Sektionen"
 		tabindex="-1"
-		class="fixed inset-0 z-[60] bg-zinc-950 overflow-y-auto
+		class="fixed inset-0 z-60 bg-zinc-950 overflow-y-auto
 		       lg:absolute lg:inset-auto lg:right-0 lg:top-full lg:mt-2 lg:z-50
 		       lg:w-80 lg:overflow-hidden lg:rounded-xl lg:border lg:border-zinc-800
 		       lg:bg-zinc-950 lg:shadow-2xl lg:shadow-black/40
