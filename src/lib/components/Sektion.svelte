@@ -13,9 +13,9 @@
 	let { id, nummer, titel, subtitel, class: className = '', children }: Props = $props();
 </script>
 
-<section {id} class="py-16 sm:py-20 border-b border-zinc-900 scroll-mt-14 {className}">
-	<div class="max-w-4xl mx-auto px-4 sm:px-6">
-		<header class="mb-8">
+<section {id} class="py-16 sm:py-20 border-b border-zinc-900 {className}">
+	<div class="spur">
+		<header class="mb-8 max-w-3xl">
 			{#if nummer}
 				<div class="font-mono text-xs text-amber-500/80 mb-1.5 tracking-wider uppercase">
 					// {nummer}

@@ -9,6 +9,39 @@
 :root {
 	font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 	color-scheme: dark;
+
+	/* Höhe der Statusleiste. Einzige Quelle für scroll-margin und Scroll-Spy.
+	   Muss zu den Höhenklassen in Statusleiste.svelte passen (h-14 lg:h-12). */
+	--kopf-hoehe: 3.5rem;
+}
+
+@media (min-width: 1024px) {
+	:root { --kopf-hoehe: 3rem; }
+}
+
+@layer base {
+	html {
+		scroll-behavior: smooth;
+	}
+
+	/* Löst das harte scroll-mt-14 in Sektion.svelte ab. */
+	:where(section[id]) {
+		scroll-margin-top: calc(var(--kopf-hoehe) + 0.75rem);
+	}
+}
+
+@layer components {
+	/* Die gemeinsame Inhaltsspur. Ersetzt "max-w-4xl mx-auto px-4 sm:px-6"
+	   in Sektion.svelte, Hero, Footer und Statusleiste. */
+	.spur {
+		width: 100%;
+		max-width: 105rem; /* 1680px */
+		margin-inline: auto;
+		padding-inline: 1rem;
+	}
+	@media (min-width: 640px)  { .spur { padding-inline: 1.5rem; } }
+	@media (min-width: 1024px) { .spur { padding-inline: 2.5rem; } }
+	@media (min-width: 1536px) { .spur { padding-inline: 4rem; } }
 }
 
 code, kbd, samp, pre, .font-mono {
