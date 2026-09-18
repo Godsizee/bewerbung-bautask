@@ -13,6 +13,15 @@ export function reveal(node: HTMLElement) {
 		return {};
 	}
 
+	// Was beim Hydrieren schon im Bild steht, wurde serverseitig sichtbar
+	// ausgeliefert. Wuerde die Action es jetzt noch auf opacity-0 setzen, blitzte
+	// es einmal weg und wieder herein. Solche Sektionen bleiben deshalb, wie sie
+	// sind - eingeblendet wird nur, was der Besucher noch gar nicht gesehen hat.
+	const kasten = node.getBoundingClientRect();
+	if (kasten.top < window.innerHeight && kasten.bottom > 0) {
+		return {};
+	}
+
 	node.classList.add('opacity-0', 'translate-y-4', 'transition-all', 'duration-700', 'ease-out');
 
 	const beobachter = new IntersectionObserver(

@@ -29,7 +29,7 @@
 		</div>
 
 		<div>
-			<h2 class="text-xs font-mono uppercase tracking-wider text-amber-500/90 mb-2">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+			<h2 class="text-xs font-mono uppercase tracking-wider text-amber-500/90 mb-2">Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
 			<p>
 				Sebastian Bade<br />
 				Friedrich-Dürr-Str. 12<br />

@@ -65,7 +65,10 @@
 		</div>
 
 		<div class="flex items-center gap-3 sm:gap-6 text-zinc-400 shrink-0">
-			<div class="hidden 2xl:flex items-center gap-2 text-zinc-500">
+			<div
+				class="hidden 2xl:flex items-center gap-2 text-zinc-500"
+				title="Aktive Zeit zwischen zwei Commits. Pausen über zwei Stunden zählen nicht mit — kalendarisch waren es zwei Tage."
+			>
 				<span>Git: <strong class="text-zinc-300 font-normal">{commitCount} Commits</strong></span>
 				<span>·</span>
 				<span>Zeit: <strong class="text-zinc-300 font-normal">~{stunden}h aktiv</strong></span>

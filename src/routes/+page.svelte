@@ -210,7 +210,7 @@
 				<div class="text-xs text-zinc-400 mt-1">wieder rausgeworfen</div>
 			</div>
 		</div>
-		<div class="text-xs sm:text-[11px] text-zinc-500 pt-1">Diese drei Zahlen sind geschätzt, nicht gemessen. Commits und Stunden oben sind echt.</div>
+		<div class="text-xs sm:text-[11px] text-zinc-500 pt-1">Diese drei Zahlen sind geschätzt, nicht gemessen. Commits und Stunden sind echt — „Stunden" meint dabei die aktive Zeit zwischen zwei Commits, Pausen über zwei Stunden zählen nicht mit. Kalendarisch waren es zwei Tage, gearbeitet wurde davon ein Bruchteil.</div>
 	</Sektion>
 
 	<!-- 4. WEGGEWORFEN -->
@@ -374,7 +374,7 @@
 				<span>Offline-First, nachweisbar</span>
 			</h3>
 			<p class="text-xs sm:text-sm text-zinc-400 leading-relaxed">
-				Ich sage „Offline-First“ nicht, weil es in eurer Anzeige steht. In <strong>Life OS</strong> stecken ein Service Worker, eine IndexedDB als lokale Datenbank und eine Sync-Queue, die später mit Supabase abgleicht. In der <strong>Notiz-PWA</strong> läuft dasselbe gegen PocketBase, mit lokalem Fallback. Beides gebaut, bevor ich eure Anzeige gelesen habe.
+				Ich sage „Offline-First“ nicht, weil es in eurer Anzeige steht. In <strong>Life OS</strong> stecken ein Service Worker, eine IndexedDB als lokale Datenbank und eine Sync-Queue, die später mit Supabase abgleicht. In der <a href="https://github.com/Godsizee/Notiz-PWA" target="_blank" rel="noreferrer" class="text-amber-400 hover:text-amber-300 underline decoration-amber-500/40 underline-offset-2">Notiz-PWA</a> läuft dasselbe gegen PocketBase, mit lokalem Fallback. Beides gebaut, bevor ich eure Anzeige gelesen habe.
 			</p>
 		</div>
 	</Sektion>
