@@ -105,7 +105,7 @@
 
 	<!-- Schnellklick-Beispielfragen -->
 	<div class="mb-5">
-		<div class="text-xs font-mono text-zinc-400 mb-2">Beispielfragen zum Anklicken:</div>
+		<div class="text-xs font-mono text-zinc-400 mb-2">Zum Anklicken:</div>
 		<div class="flex flex-wrap gap-2">
 			{#each beispielfragen as bFrage}
 				<button
@@ -135,7 +135,7 @@
 				disabled={loading}
 				rows="3"
 				maxlength="300"
-				placeholder="z. B. Was hast du im Schichtdienst gelernt? Oder: Welche Datenbanken kennst du?"
+				placeholder="Zum Beispiel: Was hast du in der Nachtschicht gelernt? Oder: Welche Datenbanken kennst du wirklich?"
 				class="w-full rounded-lg bg-zinc-950 border border-zinc-700/80 p-3.5 pr-12 text-sm text-zinc-100 placeholder-zinc-500 focus:border-amber-500 focus:outline-none focus:ring-1 focus:ring-amber-500/40 transition-colors resize-none disabled:opacity-60 font-sans"
 			></textarea>
 
@@ -163,13 +163,13 @@
 	{#if loading}
 		<div class="mt-5 rounded-lg border border-amber-500/20 bg-amber-500/5 p-4 flex items-center gap-3 text-sm text-amber-300/90 font-mono">
 			<RefreshCw class="w-4 h-4 animate-spin text-amber-400" />
-			<span>Agent analysiert Kontext und formuliert Antwort...</span>
+			<span>Der Agent denkt kurz nach ...</span>
 		</div>
 	{:else if fehler}
 		<div class="mt-5 rounded-lg border border-red-500/30 bg-red-950/40 p-4 flex items-start gap-3 text-sm text-red-200">
 			<AlertCircle class="w-5 h-5 text-red-400 shrink-0 mt-0.5" />
 			<div>
-				<div class="font-semibold text-red-300">{isRateLimit ? 'Limit erreicht' : 'Fehler aufgetreten'}</div>
+				<div class="font-semibold text-red-300">{isRateLimit ? 'Limit erreicht' : 'Da ging was schief'}</div>
 				<p class="mt-1 text-xs text-red-200/80">{fehler}</p>
 			</div>
 		</div>

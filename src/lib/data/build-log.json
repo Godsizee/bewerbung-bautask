@@ -29,8 +29,14 @@
 			"typ": "Fix",
 			"desc": "Agent-Prompt, Zeitangaben und Antwort-Rendering korrigieren",
 			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 13:00",
+			"typ": "Fix",
+			"desc": "Rate-Limit-Reihenfolge, Fonts, a11y, OG-Tags und README",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 5,
-	"stunden": 2
+	"commitCount": 6,
+	"stunden": 3
 }
