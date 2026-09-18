@@ -53,8 +53,56 @@
 			"typ": "Feature",
 			"desc": "Hobbies-Abschnitt im Agent-Prompt ergaenzt",
 			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:10",
+			"typ": "Setup",
+			"desc": "Build-Log mit echter Git-Historie synchronisiert",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:10",
+			"typ": "Feature",
+			"desc": "Inhaltsspur- und Kopfzeilenhoehe-Fundament fuer Sprungmarken",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:10",
+			"typ": "Feature",
+			"desc": "Sprungmarken-Navigation mit Scroll-Spy fuer alle neun Sektionen",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:11",
+			"typ": "Fix",
+			"desc": "Tapflaechen, Schriftgroessen und dvh-Einheiten auf Mobil",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:11",
+			"typ": "Feature",
+			"desc": "Desktop-Breite, Mobile-Feinschliff und vierten Weggeworfen-Fall",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:11",
+			"typ": "Doku",
+			"desc": "README um neue Komponenten der Ausbaustufe 2 ergaenzt",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:13",
+			"typ": "Style",
+			"desc": "PAUSE Portal als doIT-Projekt der Umschulung ausgewiesen",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:17",
+			"typ": "Fix",
+			"desc": "Basti-Agent bei breiter Spur wieder zentriert statt linksbuendig",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 9,
-	"stunden": 3
+	"commitCount": 17,
+	"stunden": 4
 }
