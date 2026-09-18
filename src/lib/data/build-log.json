@@ -101,8 +101,56 @@
 			"typ": "Fix",
 			"desc": "Basti-Agent bei breiter Spur wieder zentriert statt linksbuendig",
 			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:25",
+			"typ": "Feature",
+			"desc": "Sprungmarken in einem Dropdown statt in der Navbar verteilt",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:25",
+			"typ": "Feature",
+			"desc": "dezentes Scroll-Reveal fuer alle Sektionen",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:31",
+			"typ": "Setup",
+			"desc": "Build-Log erneut mit echter Git-Historie synchronisiert",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:52",
+			"typ": "Fix",
+			"desc": "Build-Log gegen flache Clones und fehlendes git absichern",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:52",
+			"typ": "Feature",
+			"desc": "Sicherheits-Header und echter Fokus-Trap im Sektionsmenue",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:52",
+			"typ": "Tests",
+			"desc": "Vitest-Suite fuer Antwort-Segmentierung und Git-Auswertung",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:52",
+			"typ": "Fix",
+			"desc": "Rechtsgrundlage, fehlender Beleglink und die Stundenangabe",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 14:52",
+			"typ": "Doku",
+			"desc": "Agent-Prompt auf vier weggeworfene Faelle, Deploy-Fallstricke ins README",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 17,
+	"commitCount": 25,
 	"stunden": 4
 }
