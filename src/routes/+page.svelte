@@ -78,10 +78,10 @@
 
 <Statusleiste commitCount={buildLog.commitCount} stunden={buildLog.stunden} />
 
-<main id="main-content" class="min-h-screen">
+<main id="main-content" class="min-h-dvh">
 	<!-- 1. HERO -->
 	<section id="hero" class="pt-20 pb-16 sm:pt-28 sm:pb-24 border-b border-zinc-900">
-		<div class="max-w-4xl mx-auto px-4 sm:px-6">
+		<div class="spur">
 			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono mb-6">
 				<span class="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
 				<span>Bewerbung // Software Entwickler Full-Stack</span>
@@ -89,7 +89,7 @@
 
 			<p class="text-base sm:text-lg text-zinc-400 mb-3">Moin nach Hamburg.</p>
 
-			<h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-zinc-100 leading-[1.15]">
+			<h1 class="text-3xl sm:text-5xl lg:text-6xl 2xl:text-7xl font-extrabold tracking-tight text-zinc-100 leading-[1.15] max-w-5xl text-balance">
 				Ihr wollt keine perfekte Bewerbung.<br />
 				<span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-amber-200">
 					Hier sind zwei Tage.
@@ -153,7 +153,7 @@
 			„Wer das beherrscht, liefert hier in einer Woche, wofür klassische Teams ein Quartal einplanen.“
 		</Zitat>
 
-		<div class="space-y-4 text-base sm:text-lg">
+		<div class="space-y-4 text-base sm:text-lg max-w-3xl">
 			<p>
 				Ich hatte kein Quartal. Und keine Woche. Ich hatte zwei Tage.
 			</p>
@@ -172,23 +172,25 @@
 	<!-- 3. BUILD-LOG -->
 	<Sektion id="build-log" nummer="02" titel="Build-Log" subtitel="Jeder Commit dieser Seite, in der Reihenfolge, in der er passiert ist. Direkt aus git log gezogen, nicht von Hand hübsch gemacht.">
 		<div class="rounded-lg border border-zinc-800 bg-zinc-950 overflow-hidden font-mono text-xs">
-			<div class="px-4 py-3 bg-zinc-900/80 border-b border-zinc-800 flex items-center justify-between text-zinc-400">
-				<span class="flex items-center gap-2">
-					<Terminal class="w-3.5 h-3.5 text-amber-400" />
-					<span>git log --reverse --pretty=format</span>
+			<div class="px-4 py-3 bg-zinc-900/80 border-b border-zinc-800 flex items-center justify-between gap-2 text-zinc-400">
+				<span class="flex items-center gap-2 min-w-0 truncate">
+					<Terminal class="w-3.5 h-3.5 text-amber-400 shrink-0" />
+					<span class="truncate">git log --reverse --pretty=format</span>
 				</span>
-				<span class="text-zinc-500">Branch: main</span>
+				<span class="text-zinc-500 shrink-0 hidden sm:inline">Branch: main</span>
 			</div>
 
 			<div class="divide-y divide-zinc-900">
 				{#each buildLogCommits as c}
 					<div class="p-3 sm:px-4 sm:py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2 hover:bg-zinc-900/40 transition-colors">
-						<div class="flex items-start sm:items-center gap-3">
-							<span class="text-amber-500/80 shrink-0 w-16">{c.zeit}</span>
-							<span class="px-2 py-0.5 rounded bg-zinc-800/80 text-zinc-300 shrink-0 text-[11px] border border-zinc-700/50">{c.typ}</span>
+						<div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+							<div class="flex items-center gap-3">
+								<span class="text-amber-500/80 shrink-0 w-16">{c.zeit}</span>
+								<span class="px-2 py-0.5 rounded bg-zinc-800/80 text-zinc-300 shrink-0 text-xs sm:text-[11px] border border-zinc-700/50">{c.typ}</span>
+							</div>
 							<span class="text-zinc-200 font-sans text-xs sm:text-sm">{c.desc}</span>
 						</div>
-						<span class="text-zinc-500 text-[11px] shrink-0 sm:text-right">{c.wer}</span>
+						<span class="text-zinc-500 text-xs sm:text-[11px] shrink-0 sm:text-right">{c.wer}</span>
 					</div>
 				{/each}
 			</div>
@@ -208,74 +210,96 @@
 				<div class="text-xs text-zinc-400 mt-1">wieder rausgeworfen</div>
 			</div>
 		</div>
-		<div class="text-[11px] text-zinc-500 pt-1">Diese drei Zahlen sind geschätzt, nicht gemessen. Commits und Stunden oben sind echt.</div>
+		<div class="text-xs sm:text-[11px] text-zinc-500 pt-1">Diese drei Zahlen sind geschätzt, nicht gemessen. Commits und Stunden oben sind echt.</div>
 	</Sektion>
 
 	<!-- 4. WEGGEWORFEN -->
-	<Sektion id="weggeworfen" nummer="03" titel="Weggeworfen" subtitel="Ihr sucht jemanden, der weiß, wann er ein Ergebnis wegwirft. Hier sind drei Stellen aus genau diesen zwei Tagen.">
+	<Sektion id="weggeworfen" nummer="03" titel="Weggeworfen" subtitel="Ihr sucht jemanden, der weiß, wann er ein Ergebnis wegwirft. Hier sind vier Stellen, an denen genau das passiert ist.">
 		<div class="space-y-6">
 			<!-- Fall 1 -->
-			<div class="p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
+			<div class="p-4 sm:p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
 				<div class="flex items-center gap-2 font-mono text-xs text-rose-400 font-semibold">
 					<XCircle class="w-4 h-4" />
 					<span>Fall 1: Die KI wollte mir ein Tailwind-3-Setup andrehen</span>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-					<div class="p-3 rounded bg-zinc-950 border border-zinc-900">
-						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[10px]">Vorschlag</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Vorschlag</span>
 						<span class="text-zinc-300 font-sans">Leg eine <code class="text-rose-300">tailwind.config.js</code> an und schreib <code class="text-rose-300">@tailwind base</code> ins CSS.</span>
 					</div>
-					<div class="p-3 rounded bg-zinc-950 border border-zinc-900">
-						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[10px]">Problem</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Problem</span>
 						<span class="text-zinc-300 font-sans">Tailwind 4 läuft als Vite-Plugin und will gar keine Config-Datei. Rausgekommen wäre eine blütenweiße Seite ohne ein einziges Style.</span>
 					</div>
-					<div class="p-3 rounded bg-zinc-950 border border-emerald-950/60">
-						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[10px]">Stattdessen</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-emerald-950/60">
+						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Stattdessen</span>
 						<span class="text-zinc-200 font-sans"><code class="text-emerald-300">@tailwindcss/vite</code> ins Plugin-Array, eine Importzeile in <code class="text-emerald-300">app.css</code>. Fertig.</span>
 					</div>
 				</div>
 			</div>
 
 			<!-- Fall 2 -->
-			<div class="p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
+			<div class="p-4 sm:p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
 				<div class="flex items-center gap-2 font-mono text-xs text-rose-400 font-semibold">
 					<XCircle class="w-4 h-4" />
 					<span>Fall 2: Statische Env-Variablen in einem Container</span>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-					<div class="p-3 rounded bg-zinc-950 border border-zinc-900">
-						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[10px]">Vorschlag</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Vorschlag</span>
 						<span class="text-zinc-300 font-sans">Nimm <code class="text-rose-300">$env/static/private</code> für das n8n-Secret.</span>
 					</div>
-					<div class="p-3 rounded bg-zinc-950 border border-zinc-900">
-						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[10px]">Problem</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Problem</span>
 						<span class="text-zinc-300 font-sans">Statische Variablen werden beim Build fest eingebacken. Coolify setzt die Envs aber erst zur Laufzeit im Container. Der Key wäre in Produktion schlicht leer gewesen.</span>
 					</div>
-					<div class="p-3 rounded bg-zinc-950 border border-emerald-950/60">
-						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[10px]">Stattdessen</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-emerald-950/60">
+						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Stattdessen</span>
 						<span class="text-zinc-200 font-sans"><code class="text-emerald-300">$env/dynamic/private</code>, dazu ein Guard im Server-Handler, der meckert wenn nichts drinsteht.</span>
 					</div>
 				</div>
 			</div>
 
 			<!-- Fall 3 -->
-			<div class="p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
+			<div class="p-4 sm:p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
 				<div class="flex items-center gap-2 font-mono text-xs text-rose-400 font-semibold">
 					<XCircle class="w-4 h-4" />
 					<span>Fall 3: Rate-Limit ohne Deckel nach oben</span>
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
-					<div class="p-3 rounded bg-zinc-950 border border-zinc-900">
-						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[10px]">Vorschlag</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Vorschlag</span>
 						<span class="text-zinc-300 font-sans">Ein simples Zeitfenster pro IP. Sonst nichts.</span>
 					</div>
-					<div class="p-3 rounded bg-zinc-950 border border-zinc-900">
-						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[10px]">Problem</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Problem</span>
 						<span class="text-zinc-300 font-sans">Wechselnde IPs oder ein gelangweiltes Botnet — und mein Guthaben bei Anthropic ist in ein paar Minuten weg. Auf meine Rechnung.</span>
 					</div>
-					<div class="p-3 rounded bg-zinc-950 border border-emerald-950/60">
-						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[10px]">Stattdessen</span>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-emerald-950/60">
+						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Stattdessen</span>
 						<span class="text-zinc-200 font-sans">Zwei Stufen: 8 Anfragen pro IP in 10 Minuten, und global harter Stopp bei 200 am Tag.</span>
+					</div>
+				</div>
+			</div>
+
+			<!-- Fall 4 -->
+			<div class="p-4 sm:p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-3">
+				<div class="flex items-center gap-2 font-mono text-xs text-rose-400 font-semibold">
+					<XCircle class="w-4 h-4" />
+					<span>Fall 4: Ein kompletter Light Mode, durchgeplant und selbst gekippt</span>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs font-mono">
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Vorschlag</span>
+						<span class="text-zinc-300 font-sans">Eigener Plan, nicht die KI: kompletter Light Mode mit Schalter, 30 Farbtokens für jede Fläche und jeden Text, fertig bis zum letzten Kontrastwert durchgerechnet.</span>
+					</div>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-zinc-900">
+						<span class="text-zinc-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Problem</span>
+						<span class="text-zinc-300 font-sans">Beantwortet keine Frage, die ihr an mich habt, und widerspricht meiner eigenen Ansage weiter oben: dunkel, zurückhaltend. Ein Schalter, den niemand braucht, ist kein Beweis — er ist Ablenkung.</span>
+					</div>
+					<div class="p-2.5 sm:p-3 rounded bg-zinc-950 border border-emerald-950/60">
+						<span class="text-emerald-500 block mb-1 uppercase tracking-wider text-[11px] sm:text-[10px]">Stattdessen</span>
+						<span class="text-zinc-200 font-sans">Plan verworfen, bevor eine Zeile Code geschrieben war. Die Seite bleibt dunkel — deshalb steht dieser Fall hier und nicht im Repo.</span>
 					</div>
 				</div>
 			</div>
@@ -297,7 +321,7 @@
 		</div>
 
 		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-			<div class="lg:col-span-8 space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
+			<div class="lg:col-span-7 xl:col-span-6 space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
 				<p>
 					Von 2017 bis 2024 bin ich Güterzüge gefahren. Tausende Tonnen quer durch Deutschland, für SBB Cargo International, Rail Cargo Carrier, Crossrail, Ecco Rail und Rheincargo. Berechtigungen für die Schweiz und Österreich inklusive.
 				</p>
@@ -315,7 +339,7 @@
 				</p>
 			</div>
 
-			<div class="lg:col-span-4 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3 text-xs">
+			<div class="lg:col-span-4 xl:col-span-3 p-4 rounded-xl bg-zinc-900/60 border border-zinc-800 space-y-3 text-xs">
 				<div class="overflow-hidden rounded-lg border border-zinc-800 bg-zinc-950 aspect-square max-w-[220px] mx-auto">
 					<img
 						src="/portrait-700.webp"
@@ -323,7 +347,7 @@
 						class="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-300"
 					/>
 				</div>
-				<div class="text-center font-mono text-[11px] text-zinc-400">
+				<div class="text-center font-mono text-xs sm:text-[11px] text-zinc-400">
 					Sebastian Bade · ehem. Triebfahrzeugführer
 				</div>
 				<div class="pt-2 border-t border-zinc-800 space-y-1.5 font-mono text-zinc-400">
@@ -364,7 +388,7 @@
 					<Layers class="w-4 h-4 text-amber-400 shrink-0" />
 					<span>Solides Verständnis von Softwareentwicklung</span>
 				</div>
-				<div class="md:col-span-8 text-sm text-zinc-300 leading-relaxed">
+				<div class="md:col-span-8 max-w-3xl text-sm text-zinc-300 leading-relaxed">
 					Im <em>PAUSE Portal</em> steckt ein MVC-Framework, das ich selbst in PHP 8 geschrieben habe: <code class="text-xs font-mono bg-zinc-900 px-1 py-0.5 rounded text-amber-300">Controller → Service → Repository</code> sauber getrennt, PDO mit echten Prepared Statements, 21 Tabellen mit Fremdschlüsseln und Indizes. Bei <em>TramPuls</em> dann die andere Seite: Datenmodellierung mit dbt und analytische Queries in DuckDB.
 				</div>
 			</div>
@@ -375,7 +399,7 @@
 					<Cpu class="w-4 h-4 text-amber-400 shrink-0" />
 					<span>Driven arbeiten</span>
 				</div>
-				<div class="md:col-span-8 text-sm text-zinc-300 leading-relaxed">
+				<div class="md:col-span-8 max-w-3xl text-sm text-zinc-300 leading-relaxed">
 					<strong>JobPuls</strong>. Ich hatte keine Lust, jeden Morgen fünf Jobportale durchzuklicken, also habe ich es einmal richtig gebaut: n8n holt nachts die Feeds, filtert hart, ruft jeden Link live auf und legt mir morgens eine fertige Liste auf Telegram. Bauzeit-Deckel waren 16 Stunden, danach war Schluss.
 				</div>
 			</div>
@@ -386,7 +410,7 @@
 					<Radio class="w-4 h-4 text-amber-400 shrink-0" />
 					<span>KI-native Arbeitsweise</span>
 				</div>
-				<div class="md:col-span-8 text-sm text-zinc-300 leading-relaxed">
+				<div class="md:col-span-8 max-w-3xl text-sm text-zinc-300 leading-relaxed">
 					Auf meinem Hetzner-Server läuft eine eigene n8n-Instanz mit <strong class="text-amber-400 font-mono">{n8nStats.gesamt} Workflows, davon {n8nStats.aktiv} aktiv</strong> (Stand {n8nStats.stand}, beim Build automatisch nachgezählt). Dazu Claude Code mit eigenen Skills, MCP-Servern und Hooks. Und die Seite, auf der ihr gerade seid.
 				</div>
 			</div>
@@ -397,7 +421,7 @@
 					<ShieldCheck class="w-4 h-4 text-amber-400 shrink-0" />
 					<span>Qualitätsanspruch</span>
 				</div>
-				<div class="md:col-span-8 text-sm text-zinc-300 leading-relaxed">
+				<div class="md:col-span-8 max-w-3xl text-sm text-zinc-300 leading-relaxed">
 					Steht oben unter <em>Weggeworfen</em>. Kurzfassung: Ich lese, was die KI mir hinlegt, bevor es deployed wird — gegen Framework-Eigenheiten, gegen die Laufzeitumgebung, gegen die offensichtlichen Sicherheitslöcher.
 				</div>
 			</div>
@@ -408,7 +432,7 @@
 					<Database class="w-4 h-4 text-amber-400 shrink-0" />
 					<span>Die Plattform gemeinsam pushen</span>
 				</div>
-				<div class="md:col-span-8 text-sm text-zinc-300 leading-relaxed">
+				<div class="md:col-span-8 max-w-3xl text-sm text-zinc-300 leading-relaxed">
 					Architekturentscheidungen schreibe ich als ADRs mit, Backlogs sind gepflegt, und der KI-Kontext liegt so im Repo, dass jemand anderes — oder ein Agent — ohne Rückfragen weitermachen kann. Ich baue ungern Sachen, die nur ich verstehe.
 				</div>
 			</div>
@@ -417,7 +441,7 @@
 
 	<!-- 7. WAS ICH NICHT KANN -->
 	<Sektion id="luecken" nummer="06" titel="Was ich nicht kann" subtitel="Was ich noch nicht kann. Ungeschönt, weil ihr es im ersten Technical sowieso merkt.">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-4">
 			<div class="p-5 rounded-lg border border-zinc-800 bg-zinc-900/40 space-y-2">
 				<div class="flex items-center gap-2 text-amber-400 font-mono text-sm font-semibold">
 					<XCircle class="w-4 h-4 text-zinc-500" />
@@ -466,13 +490,13 @@
 
 	<!-- 8. PROJEKTE -->
 	<Sektion id="projekte" nummer="07" titel="Projekte" subtitel="Vier Projekte von meinem GitHub. Jeweils kurz: was es überhaupt ist, woran es hakte, wofür ich mich entschieden habe und was am Ende dabei rauskam.">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
 			{#each projekte as p}
 				<div class="rounded-xl border border-zinc-800 bg-zinc-900/50 p-6 flex flex-col justify-between hover:border-zinc-700 transition-colors">
 					<div>
 						<div class="flex items-start justify-between gap-2 mb-2">
 							<h3 class="text-lg font-bold text-zinc-100">{p.titel}</h3>
-							<span class="text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-amber-400 border border-zinc-700">
+							<span class="text-[11px] sm:text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-800 text-amber-400 border border-zinc-700">
 								{p.badge}
 							</span>
 						</div>
@@ -481,15 +505,15 @@
 
 						<div class="space-y-3 text-xs sm:text-sm text-zinc-300 mt-4 pt-4 border-t border-zinc-800/60 leading-relaxed">
 							<div>
-								<span class="text-zinc-500 font-mono uppercase text-[10px] block">Problem</span>
+								<span class="text-zinc-500 font-mono uppercase text-[11px] sm:text-[10px] block">Problem</span>
 								<p class="text-zinc-300">{p.problem}</p>
 							</div>
 							<div>
-								<span class="text-zinc-500 font-mono uppercase text-[10px] block">Entscheidung</span>
+								<span class="text-zinc-500 font-mono uppercase text-[11px] sm:text-[10px] block">Entscheidung</span>
 								<p class="text-zinc-300">{p.entscheidung}</p>
 							</div>
 							<div>
-								<span class="text-emerald-500/90 font-mono uppercase text-[10px] block">Ergebnis</span>
+								<span class="text-emerald-500/90 font-mono uppercase text-[11px] sm:text-[10px] block">Ergebnis</span>
 								<p class="text-zinc-200 font-medium">{p.ergebnis}</p>
 							</div>
 						</div>
@@ -517,12 +541,14 @@
 
 	<!-- 9. FRAG DEN AGENTEN -->
 	<Sektion id="agent" nummer="08" titel="Frag den Agenten" subtitel="Dahinter läuft ein echter n8n-Workflow mit Claude Haiku 4.5. Fragt ihn was — er kennt meinen Lebenslauf inzwischen besser als ich.">
-		<Agent />
+		<div class="max-w-4xl">
+			<Agent />
+		</div>
 	</Sektion>
 
 	<!-- 10. FORMALES & KONTAKT -->
 	<Sektion id="kontakt" nummer="09" titel="Formales & Kontakt" subtitel="Die Eckdaten. Mehr gibt es dazu nicht zu sagen.">
-		<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+		<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8">
 			<div class="space-y-4 text-sm text-zinc-300">
 				<div class="flex items-start gap-3">
 					<Calendar class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
@@ -590,7 +616,7 @@
 </main>
 
 <footer class="border-t border-zinc-900 bg-zinc-950 py-12 text-xs font-mono text-zinc-500">
-	<div class="max-w-4xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+	<div class="spur flex flex-col sm:flex-row items-center justify-between gap-4">
 		<div>
 			<span>© 2026 Sebastian Bade · Gebaut für die Bewerbung bei der BauTask GmbH</span>
 		</div>
