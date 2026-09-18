@@ -2,7 +2,7 @@
 	<title>Impressum · Sebastian Bade · BauTask</title>
 </svelte:head>
 
-<div class="min-h-screen py-16 px-4 sm:px-6 max-w-3xl mx-auto">
+<div class="min-h-dvh py-16 px-4 sm:px-6 max-w-3xl mx-auto">
 	<a href="/" class="inline-flex items-center gap-1 text-xs font-mono text-amber-400 hover:text-amber-300 mb-8">
 		← Zurück zur Bewerbung
 	</a>

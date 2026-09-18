@@ -79,7 +79,7 @@
 			<div>
 				<h3 class="text-lg font-semibold text-zinc-100 flex items-center gap-2">
 					<span>Basti-Agent</span>
-					<span class="inline-flex items-center gap-1 text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
+					<span class="inline-flex items-center gap-1 text-xs sm:text-[11px] font-mono px-2 py-0.5 rounded bg-emerald-950/60 border border-emerald-500/30 text-emerald-400">
 						<span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
 						Haiku 4.5 via n8n
 					</span>
@@ -91,7 +91,7 @@
 		</div>
 
 		<!-- Architektur-Mini-Badge -->
-		<div class="hidden lg:flex items-center gap-1.5 font-mono text-[11px] text-zinc-500 bg-zinc-950 px-3 py-1.5 rounded-md border border-zinc-800/80">
+		<div class="hidden lg:flex items-center gap-1.5 font-mono text-xs sm:text-[11px] text-zinc-500 bg-zinc-950 px-3 py-1.5 rounded-md border border-zinc-800/80">
 			<Terminal class="w-3.5 h-3.5 text-zinc-400" />
 			<span>Browser</span>
 			<span class="text-zinc-700">→</span>
@@ -112,7 +112,7 @@
 					type="button"
 					onclick={() => sendeFrage(bFrage)}
 					disabled={loading}
-					class="text-xs text-left px-3 py-1.5 rounded-md bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 text-zinc-300 hover:text-amber-300 transition-colors disabled:opacity-50"
+					class="text-xs text-left px-3 py-2.5 min-h-11 sm:min-h-0 sm:py-1.5 rounded-md bg-zinc-800/60 hover:bg-zinc-800 border border-zinc-700/60 text-zinc-300 hover:text-amber-300 transition-colors disabled:opacity-50"
 				>
 					„{bFrage}“
 				</button>
@@ -142,7 +142,7 @@
 			<button
 				type="submit"
 				disabled={loading || frage.trim().length < 3 || frage.length > 300}
-				class="absolute right-3 bottom-3 p-2 rounded-md bg-amber-500 text-zinc-950 hover:bg-amber-400 disabled:opacity-30 disabled:hover:bg-amber-500 transition-all cursor-pointer disabled:cursor-not-allowed"
+				class="absolute right-3 bottom-3 p-2.5 min-h-11 min-w-11 sm:min-h-0 sm:min-w-0 sm:p-2 rounded-md bg-amber-500 text-zinc-950 hover:bg-amber-400 disabled:opacity-30 disabled:hover:bg-amber-500 transition-all cursor-pointer disabled:cursor-not-allowed flex items-center justify-center"
 				title="Frage absenden"
 			>
 				{#if loading}
@@ -175,7 +175,7 @@
 		</div>
 	{:else if antwort}
 		<div class="mt-5 rounded-lg border border-zinc-700 bg-zinc-950 p-5 space-y-2">
-			<div class="text-[11px] font-mono uppercase tracking-wider text-amber-400 flex items-center justify-between">
+			<div class="text-xs sm:text-[11px] font-mono uppercase tracking-wider text-amber-400 flex items-center justify-between">
 				<span>Antwort des Agenten</span>
 				{#if dauer !== null}
 					<span class="text-zinc-500 font-normal">Antwortzeit {dauer.toFixed(1)}s</span>
