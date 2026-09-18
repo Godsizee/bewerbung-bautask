@@ -46,7 +46,7 @@
 		{
 			titel: 'PAUSE Portal',
 			badge: 'PHP 8 MVC · MySQL · Vorbereitung Laravel 12',
-			was: 'Ein Schulportal mit vier Rollen — Schüler, Lehrer, Planer, Admin. Stundenplan und Vertretungen, Anwesenheit, Ankündigungen, Sprechstunden, Schwarzes Brett.',
+			was: 'Ein Schulportal mit vier Rollen — Schüler, Lehrer, Planer, Admin. Stundenplan und Vertretungen, Anwesenheit, Ankündigungen, Sprechstunden, Schwarzes Brett. Mein doIT-Projekt aus der Umschulung.',
 			problem: 'Vier Rollen heißt: an jeder Stelle die Frage, wer etwas sehen, ändern oder nur lesen darf. Ein großes Framework nimmt einem da viel ab — versteckt aber auch, was wirklich passiert.',
 			entscheidung: 'Ein eigenes, schlankes MVC in PHP 8 mit klar getrennten Schichten (Controller → Service → Repository), PDO mit Prepared Statements und 21 sauber normalisierten Tabellen samt Fremdschlüsseln. Einmal alles selbst bauen, um es wirklich zu verstehen.',
 			ergebnis: '21 Tabellen, rund 98 Routen, im Betrieb. Und weil die Struktur sitzt, lässt sie sich fast 1:1 nach Laravel 12 + Vue 3 umziehen — der Migrationsplan liegt fertig daneben.',
