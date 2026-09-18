@@ -35,8 +35,14 @@
 			"typ": "Fix",
 			"desc": "Rate-Limit-Reihenfolge, Fonts, a11y, OG-Tags und README",
 			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 13:17",
+			"typ": "Style",
+			"desc": "Seitentexte in Bastis Schreibstil, kaputte Repo-Links gefixt",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 6,
+	"commitCount": 7,
 	"stunden": 3
 }

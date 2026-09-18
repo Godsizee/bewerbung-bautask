@@ -365,7 +365,7 @@
 					<span>Solides Verständnis von Softwareentwicklung</span>
 				</div>
 				<div class="md:col-span-8 text-sm text-zinc-300 leading-relaxed">
-					Im <em>PAUSE Portal</em> steckt ein MVC-Framework, das ich selbst in PHP 8 geschrieben habe: <code class="text-xs font-mono bg-zinc-900 px-1 py-0.5 rounded text-amber-300">Controller → Service → Repository</code> sauber getrennt, PDO mit echten Prepared Statements, 21 Tabellen mit Fremdschlüsseln und Indizes. Bei <em>Bahnpuls</em> dann die andere Seite: Datenmodellierung mit dbt und analytische Queries in DuckDB.
+					Im <em>PAUSE Portal</em> steckt ein MVC-Framework, das ich selbst in PHP 8 geschrieben habe: <code class="text-xs font-mono bg-zinc-900 px-1 py-0.5 rounded text-amber-300">Controller → Service → Repository</code> sauber getrennt, PDO mit echten Prepared Statements, 21 Tabellen mit Fremdschlüsseln und Indizes. Bei <em>TramPuls</em> dann die andere Seite: Datenmodellierung mit dbt und analytische Queries in DuckDB.
 				</div>
 			</div>
 
