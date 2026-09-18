@@ -41,8 +41,20 @@
 			"typ": "Style",
 			"desc": "Seitentexte in Bastis Schreibstil, kaputte Repo-Links gefixt",
 			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 13:20",
+			"typ": "Fix",
+			"desc": "Bahnpuls-Beleg in Sektion 05 auf TramPuls umgestellt",
+			"wer": "Basti + Agent"
+		},
+		{
+			"zeit": "Fr 18.09 13:34",
+			"typ": "Feature",
+			"desc": "Hobbies-Abschnitt im Agent-Prompt ergaenzt",
+			"wer": "Basti + Agent"
 		}
 	],
-	"commitCount": 7,
+	"commitCount": 9,
 	"stunden": 3
 }
