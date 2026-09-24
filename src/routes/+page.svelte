@@ -112,7 +112,7 @@
 				<span class="text-zinc-700 hidden sm:inline">/</span>
 				<span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
 					<Calendar class="w-3.5 h-3.5" />
-					<span>Verfügbar ab 01.10.2026</span>
+					<span>Verfügbar ab sofort</span>
 				</span>
 			</div>
 
@@ -323,7 +323,7 @@
 		<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 			<div class="lg:col-span-7 xl:col-span-6 space-y-4 text-zinc-300 text-sm sm:text-base leading-relaxed">
 				<p>
-					Von 2017 bis 2024 bin ich Güterzüge gefahren. Tausende Tonnen quer durch Deutschland, für SBB Cargo International, Rail Cargo Carrier, Crossrail, Ecco Rail und Rheincargo. Berechtigungen für die Schweiz und Österreich inklusive.
+					Von 2017 bis 2024 bin ich Güterzüge gefahren. Tausende Tonnen quer durch Deutschland, zuletzt gut drei Jahre bei ecco Rail, davor bei Bahnservice Saarland, CD Logistik und Railway Solution direkt. Berechtigungen für die Schweiz und Österreich inklusive.
 				</p>
 				<p>
 					Nachtschicht bei minus zehn Grad. Funkloch mitten im Wald. Dokumentationspflicht für jede Bremsberechnung und jeden einzelnen Wagen.
@@ -332,7 +332,7 @@
 					Wenn die App vom Eisenbahnverkehrsunternehmen abstürzt oder Daten verschluckt, steht der Zug. Nicht metaphorisch.
 				</p>
 				<p>
-					<strong>2024 war Schluss.</strong> Zwei Bandscheibenvorfälle, Bahntauglichkeit dauerhaft weg. Das war keine Sinnsuche und kein Karrierewechsel, sondern ein Attest. Seitdem berufliche Reha: Umschulung zum staatlich geprüften Wirtschaftsinformatiker an der SRH Heidelberg, Abschluss am <strong>24. September 2026</strong>. Planmäßig.
+					<strong>2024 war Schluss.</strong> Zwei Bandscheibenvorfälle, Bahntauglichkeit dauerhaft weg. Das war keine Sinnsuche und kein Karrierewechsel, sondern ein Attest. Seitdem berufliche Reha: Umschulung zum staatlich anerkannten Wirtschaftsinformatiker an der SRH Heidelberg, abgeschlossen am <strong>23. September 2026</strong> mit der Note 1,8. Planmäßig.
 				</p>
 				<p class="text-amber-300/90 font-medium">
 					Ihr baut Software für Leute, die im Schlamm stehen und zwei Balken Empfang haben. Ich war dieser Nutzer. Nur auf Schienen statt auf dem Gerüst.
@@ -361,7 +361,11 @@
 					</div>
 					<div class="flex justify-between">
 						<span>Abschluss:</span>
-						<span class="text-emerald-400 font-semibold">24.09.2026</span>
+						<span class="text-emerald-400 font-semibold">23.09.2026</span>
+					</div>
+					<div class="flex justify-between">
+						<span>Note:</span>
+						<span class="text-emerald-400 font-semibold">1,8</span>
 					</div>
 				</div>
 			</div>
@@ -484,7 +488,7 @@
 		</div>
 
 		<div class="mt-6 p-4 rounded-lg bg-zinc-900/60 border border-zinc-800 text-sm text-zinc-200">
-			In eurer Anzeige steht, ein Abschluss sei nicht zwingend nötig. <strong class="text-amber-400">Ich habe trotzdem einen.</strong> Ab dem 24.09.2026 staatlich geprüfter Wirtschaftsinformatiker.
+			In eurer Anzeige steht, ein Abschluss sei nicht zwingend nötig. <strong class="text-amber-400">Ich habe trotzdem einen.</strong> Seit dem 23.09.2026 staatlich anerkannter Wirtschaftsinformatiker, Note 1,8.
 		</div>
 	</Sektion>
 
@@ -554,7 +558,7 @@
 					<Calendar class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
 					<div>
 						<div class="font-semibold text-zinc-100">Verfügbarkeit</div>
-						<div class="text-zinc-300">Fest ab <strong>01.10.2026</strong>, Vollzeit und unbefristet. Vorher geht nicht, da läuft die Umschulung noch (Abschluss 24.09.2026).</div>
+						<div class="text-zinc-300"><strong>Ab sofort</strong>, Vollzeit und unbefristet. Die Umschulung ist seit dem 23.09.2026 abgeschlossen.</div>
 					</div>
 				</div>
 
@@ -562,7 +566,7 @@
 					<Briefcase class="w-5 h-5 text-amber-400 shrink-0 mt-0.5" />
 					<div>
 						<div class="font-semibold text-zinc-100">Qualifikation</div>
-						<div class="text-zinc-300">Staatlich geprüfter Wirtschaftsinformatiker (SRH Heidelberg, berufliche Rehabilitation).</div>
+						<div class="text-zinc-300">Staatlich anerkannter Wirtschaftsinformatiker (SRH Heidelberg, berufliche Rehabilitation), Abschlussnote 1,8.</div>
 					</div>
 				</div>
 
